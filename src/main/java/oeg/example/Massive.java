@@ -33,6 +33,26 @@ public class Massive {
         //Array_A();
         //Array_B();
         //Array_C();
+        //Array_D();
+        //Array_E();
+        int[][] A ={{-1,2,0,1},{0,-1,2,1},{-1,1,2,3}};
+        int[] B = {-1,2,0,3};
+
+        int[] C = prod(A,B);
+        System.out.println("Matrix A:");
+        show2D(A);
+        System.out.println("Vector B:");
+        show1D(B);
+        System.out.println("Vector C = AB:");
+        show1D(C);
+    }
+    public static void show(int[][] nums){
+        for (int i = 0; i < nums.length; i++) {
+            for (int j = 0; j < nums[i].length; j++) {
+                System.out.print(nums[i][j]+ " ");
+            }
+            System.out.println();
+        }
     }
 
     public static void Array_A(){
@@ -102,5 +122,64 @@ public class Massive {
         System.out.println(txt);
     }
 
+    public static void Array_D(){
+        int[][] bravo = {{1,2,3},{4,5},{6,7,8}};
+        int[][] alpha = {{9,10,11},{12,13}};
+        System.out.println("Array alpha:");
+        show(alpha);
+        System.out.println("Array bravo:");
+        show(bravo);
+    }
 
+    public static void Array_E(){
+        int[] size = {3,7,10,12};
+
+        char[][] symbol = new char[size.length][];
+
+        char s = 'A';
+
+        String txt = "";
+
+        for (int i = 0; i < symbol.length; i++) {
+            symbol[i] = new char[size[i]];
+            for (int j = 0; j < symbol[i].length; j++) {
+                symbol[i][j]= s;
+
+                s++;
+
+                txt += " | "+ symbol[i][j];
+            }
+            txt += "|\n";
+        }
+
+        JOptionPane.showMessageDialog(null,txt,"Alphabet",JOptionPane.PLAIN_MESSAGE);
+    }
+
+    public static void show1D(int[] nums){
+        for (int s : nums) {
+            System.out.printf("%4d",s);
+        }
+        System.out.println();
+    }
+
+    public static void show2D(int[][] nums){
+        for (int[] p : nums) {
+            for (int s : p) {
+                System.out.printf("%4d",s);
+            }
+            System.out.println();
+        }
+    }
+
+    public static int[] prod(int[][] A,int[] B){
+        int [] C = new int[A.length];
+
+        for (int i = 0; i < C.length; i++) {
+            C[i] = 0;
+            for (int j = 0; j < B.length; j++) {
+                C[i] += A[i][j]*B[j];
+            }
+        }
+        return C;
+    }
 }
